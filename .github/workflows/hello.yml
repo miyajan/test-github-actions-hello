@@ -1,12 +1,11 @@
-name: GitHub Context
-on: push
+name: If
+on: pull_request
 
 jobs:
-  github-context:
-    name: GitHub Context
+  if-pull-request-is-opened:
+    name: If
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub Context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "${GITHUB_CONTEXT}"
+      - name: echo if pull request is opened
+        if: github.event_name == 'pull_request' && github.event.action == 'opened'
+        run: echo "pull request is opened"
