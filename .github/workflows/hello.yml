@@ -1,15 +1,21 @@
-name: Hello, World!
+name: Node.js Matrix Build
 on: push
 
 jobs:
   build:
-    name: Greeting
-    runs-on: ubuntu-latest
-    container:
-      image: node
+    name: Node.js ${{ matrix.os }} ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [6, 8, 10]
     steps:
       - name: Print GitHub Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
-      - run: node -e 'console.log("Hello, World!");'
+      - name: Set Node.js
+        uses: actions/setup-node@v1
+        with:
+          version: ${{ matrix.node }}
+      - run: node -v'
