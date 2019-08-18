@@ -12,5 +12,6 @@ jobs:
       - name: Print GitHub Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${GITHUB_CONTEXT}"
       - run: echo "Hello, World!"
 
