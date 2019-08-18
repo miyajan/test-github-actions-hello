@@ -1,9 +1,11 @@
-name: test pull_request event
-on: pull_request
+name: env hello
+on: push
 
 jobs:
-  pull_request:
-    name: pull request
+  build:
+    name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World!"
+      - env:
+          NAME: Mona
+        run: echo "Hello, ${NAME}"
