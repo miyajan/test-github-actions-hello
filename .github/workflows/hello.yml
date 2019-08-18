@@ -1,11 +1,9 @@
-name: If
+name: test pull_request event
 on: pull_request
 
 jobs:
-  if-pull-request-is-opened:
-    name: If
+  pull_request:
+    name: pull request
     runs-on: ubuntu-latest
     steps:
-      - name: echo if pull request is opened
-        if: github.event_name == 'pull_request' && github.event.action == 'opened'
-        run: echo "pull request is opened"
+      - run: echo "Hello, World!"
