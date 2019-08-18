@@ -1,5 +1,8 @@
 name: Hello, World!
-on: repository_dispatch
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
