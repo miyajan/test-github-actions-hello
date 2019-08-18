@@ -2,9 +2,9 @@ name: Hello, World!
 on:
   push:
     branches:
-      - !refs/heads/*
+      - '!*'
     tags:
-      - v*
+      - 'v*'
 
 jobs:
   build:
