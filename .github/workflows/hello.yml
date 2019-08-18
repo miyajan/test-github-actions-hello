@@ -1,7 +1,5 @@
 name: Hello, World!
-on:
-  schedule:
-    - cron: '*/1 * * * *'
+on: [push, pull_request]
 
 jobs:
   build:
