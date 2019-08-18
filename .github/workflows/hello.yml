@@ -8,9 +8,11 @@ jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
+    container:
+      image: node
     steps:
       - name: Print GitHub Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
-      - run: echo "Hello, World!"
+      - run: node -e 'console.log("Hello, World!");'
