@@ -6,6 +6,7 @@ jobs:
     name: If
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Hello, World!"
       - name: echo if pull request is opened
         if: github.event_name == 'pull_request' && github.event.action == 'opened'
         run: echo "pull request is opened"
