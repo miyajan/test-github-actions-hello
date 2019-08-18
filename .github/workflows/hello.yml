@@ -2,9 +2,9 @@ name: Hello, World!
 on:
   push:
     branches:
-      - master
-    tags:
       - "!*"
+    tags:
+      - "v*"
 
 jobs:
   build:
@@ -16,4 +16,3 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "${GITHUB_CONTEXT}"
       - run: echo "Hello, World!"
-
