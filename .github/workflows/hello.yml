@@ -2,7 +2,7 @@ name: Hello, World!
 on:
   push:
     paths:
-      - "tests/*"
+      - "tests/**"
 
 jobs:
   build:
