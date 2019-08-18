@@ -1,13 +1,16 @@
 name: Hello, World!
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
 
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
+      - name: Print GitHub Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - run: echo "Hello, World!"
 
