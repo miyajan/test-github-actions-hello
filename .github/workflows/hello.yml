@@ -1,4 +1,4 @@
-name: env hello
+name: secret hello
 on: push
 
 jobs:
@@ -6,6 +6,4 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - env:
-          NAME: Mona
-        run: echo "Hello, ${NAME}"
+      - run: echo "Hello, ${SECRET_VALUE}"
