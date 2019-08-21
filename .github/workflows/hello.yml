@@ -2,7 +2,7 @@ name: hello
 on:
   push:
     branches:
-      - "test-refs-branches"
+      - "*"
 
 jobs:
   build:
