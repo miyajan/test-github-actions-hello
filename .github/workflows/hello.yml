@@ -8,5 +8,11 @@ jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
+    env:
+      TEST: test
     steps:
       - run: echo "Hello, World"
+      - name: Dump GitHub Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "${GITHUB_CONTEXT}"
