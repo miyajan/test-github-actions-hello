@@ -6,12 +6,16 @@ on:
     tags:
       - "!*"
 
+env: &commonEnv
+  TEST: hoge
+
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
+      - run: echo "Hello, World ${TEST}"
+        env: *commonEnv
       - name: Dump GitHub Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
