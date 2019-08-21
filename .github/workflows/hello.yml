@@ -6,14 +6,14 @@ on:
     tags:
       - "!*"
 
-env: &commonEnv
-  TEST: hoge
-
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Hello, World ${TEST}"
+        env: &commonEnv
+          TEST: hoge
       - run: echo "Hello, World ${TEST}"
         env: *commonEnv
       - name: Dump GitHub Context
