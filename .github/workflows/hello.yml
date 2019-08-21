@@ -1,9 +1,12 @@
-name: secret hello
-on: push
+name: hello
+on:
+  push:
+    branches:
+      - refs/tags/*
 
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, ${{ secrets.SECRET_VALUE }}"
+      - run: echo "Hello, World"
