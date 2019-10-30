@@ -1,12 +1,22 @@
-name: hello
-on:
-  push:
-    branches:
-      - refs/tags/*
+name: Node.js Matrix Build
+on: push
 
 jobs:
   build:
-    name: Greeting
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-18.04']
+        node: ['12']
+    name: Node ${{ matrix.node }} job on ${{ matrix.os }}
     steps:
-      - run: echo "Hello, World"
+      - uses: actions/checkout@v1
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          version: ${{ matrix.node }}
+      - run: node -v
+      - run: npm -v
+      - run: npm i
+      - run: npm run eslint
+      - run: npm run test:regression
