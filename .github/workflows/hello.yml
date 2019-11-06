@@ -1,12 +1,9 @@
 name: hello
-on:
-  push:
-    branches:
-      - refs/tags/*
+on: push
 
 jobs:
   build:
     name: Greeting
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - run: echo "Hello, World"
