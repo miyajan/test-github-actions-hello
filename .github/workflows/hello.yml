@@ -7,6 +7,12 @@ on:
 jobs:
   build:
     name: Greeting
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-18.04, ubuntu-16.04, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: echo "Hello, World"
+      - shell: python
+        run: |
+          import sys
+          print("Python {}.{}.{}".format(*sys.version_info))
