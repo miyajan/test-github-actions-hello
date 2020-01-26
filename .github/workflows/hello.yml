@@ -9,6 +9,10 @@ jobs:
         os: [windows-latest, ubuntu-18.04, ubuntu-16.04, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
       - shell: python
         run: |
           import sys
