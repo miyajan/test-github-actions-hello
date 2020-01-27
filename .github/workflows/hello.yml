@@ -3,6 +3,6 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-test
+    runs-on: ubuntu-latest
     steps:
       - run: echo "hoge"
