@@ -1,12 +1,13 @@
 name: hello
-on:
-  push:
-    branches:
-      - refs/tags/*
+on: push
 
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2.0.0
       - run: echo "Hello, World"
+      - run: |
+          echo "hoge"
+          echo "fuga"
