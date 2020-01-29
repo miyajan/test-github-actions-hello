@@ -6,7 +6,7 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout
+      - uses: docker://alpine:3.8
       - uses: miyajan/javascript-action-hello
       - run: echo "Hello, World"
       - run: |
