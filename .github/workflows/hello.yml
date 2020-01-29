@@ -6,7 +6,7 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://alpine:3.8
+      - uses: docker://gcr.io/cloud-builders/gcloud
       - run: echo "Hello, World"
       - run: |
           echo "hoge"
