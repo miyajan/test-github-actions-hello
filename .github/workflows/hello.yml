@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: docker://gcr.io/cloud-builders/gcloud
         with:
-          args: ['version']
+          args: version
       - run: echo "Hello, World"
       - run: |
           echo "hoge"
