@@ -1,8 +1,5 @@
 name: hello
-on:
-  push:
-    branches:
-      - refs/tags/*
+on: push
 
 jobs:
   build:
@@ -10,3 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
+      - uses: actions/checkout@v1.0.0
+      - uses: docker://alpine:3.11
