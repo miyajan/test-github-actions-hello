@@ -9,3 +9,6 @@ jobs:
       - run: echo "Hello, World"
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
+        with:
+          entrypoint: /bin/echo
+          args: Hello, World!
