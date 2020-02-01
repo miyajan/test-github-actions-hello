@@ -12,5 +12,8 @@ jobs:
         with:
           entrypoint: /bin/echo
           args: Hello, World!
-      - run: rm -rf *
+      - run: |
+          pwd
+          ls
+          sudo rm -rf *
         working-directory: /tmp
