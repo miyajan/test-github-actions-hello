@@ -7,14 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-        shell: bash -eux {0}
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
         with:
           entrypoint: /bin/echo
           args: Hello, World!
       - run: |
-          pwd
-          ls
-          sudo rm -rf *
-        working-directory: /tmp
+          import sys
+          print(sys.version)
+        shell: python
