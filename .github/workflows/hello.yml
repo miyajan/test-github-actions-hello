@@ -2,6 +2,18 @@ name: hello
 on: push
 
 jobs:
+  test:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ toJson(github) }}"
+      - run: echo "${{ toJson(env) }}"
+      - run: echo "${{ toJson(job) }}"
+      - run: echo "${{ toJson(steps) }}"
+      - run: echo "${{ toJson(runner) }}"
+      - run: echo "${{ toJson(secrets) }}"
+      - run: echo "${{ toJson(strategy) }}"
+      - run: echo "${{ toJson(matrix) }}"
   build:
     if: github.ref == 'ref/head/master'
     name: Greeting
