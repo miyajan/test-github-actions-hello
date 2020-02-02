@@ -5,14 +5,13 @@ jobs:
   unit-test:
     name: Unit Test
     strategy:
+      fail-fast: true
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: [10, 12]
-        exclude:
-          - os: [windows-latest, macos-latest]
-            node: 10
     runs-on: ${{ matrix.os }}
     steps:
+      - run: echo
       - name: Set Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1.3.0
         with:
