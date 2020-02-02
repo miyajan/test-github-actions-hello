@@ -10,7 +10,7 @@ jobs:
         node: [10, 12]
         include:
           - os: windows-latest
-            node: 10
+            node: 8
             npm: 6
     runs-on: ${{ matrix.os }}
     steps:
