@@ -9,9 +9,8 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: [10, 12]
         exclude:
-          - os: macos-latest
+          - os: [windows-latest, macos-latest]
             node: 10
-          - os: windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set Node.js ${{ matrix.node }}
