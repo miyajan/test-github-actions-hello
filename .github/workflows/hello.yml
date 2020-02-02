@@ -7,7 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - if: success()
-        run: echo "hoge"
+        run: echo "success hoge"
+      - if: always()
+        run: echo "always hoge"
+      - if: cancelled()
+        run: echo "cancelled hoge"
+      - if: failure()
+        run: echo "failure hoge"
       - run: echo "${{ 'That''s right' }}"
       - run: echo "${{ toJson(github) }}"
       - run: echo "${{ toJson(env) }}"
