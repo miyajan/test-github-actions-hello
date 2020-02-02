@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
+      - run: node -v
+      - run: npm -v
       - run: |
           import sys
           print(sys.version)
