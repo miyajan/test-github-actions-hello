@@ -15,7 +15,7 @@ jobs:
       - run: echo "${{ toJson(strategy) }}"
       - run: echo "${{ toJson(matrix) }}"
   build:
-    if: github.ref == 'ref/head/if'
+    if: github.ref == 'refs/heads/if'
     name: Greeting
     runs-on: ubuntu-latest
     steps:
