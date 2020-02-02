@@ -6,6 +6,8 @@ jobs:
     name: Debug
     runs-on: ubuntu-latest
     steps:
+      - if: github.event_name == 'pull_request'
+        run: echo "hoge"
       - run: echo "${{ toJson(github) }}"
       - run: echo "${{ toJson(env) }}"
       - run: echo "${{ toJson(job) }}"
