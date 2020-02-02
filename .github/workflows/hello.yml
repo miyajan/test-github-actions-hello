@@ -17,7 +17,7 @@ jobs:
       - run: echo "${{ toJson(strategy) }}"
       - run: echo "${{ toJson(matrix) }}"
   build:
-    if: github.ref == 'refs/heads/if'
+    if: github.ref == 'refs/heads/master'
     name: Greeting
     runs-on: ubuntu-latest
     steps:
@@ -31,3 +31,8 @@ jobs:
           import sys
           print(sys.version)
         shell: python
+  hoge:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "fuga"
