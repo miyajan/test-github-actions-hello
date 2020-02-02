@@ -1,22 +1,18 @@
-name: hello
-on: 
-  push:
-    tags:
-      - v[0-9]+.[0-9]+.[0-9]+**
-      - '!v[0-9]+.[0-9]+.[0-9]+-testing'
+name: Continuous Integration
+on: push
 
 jobs:
-  build:
-    name: Greeting
-    runs-on: ubuntu-latest
+  unit-test:
+    name: Unit Test
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [10, 12]
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/checkout@v1.0.0
-      - uses: docker://alpine:3.11
+      - name: Set Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1.3.0
         with:
-          entrypoint: /bin/echo
-          args: Hello, World!
-      - run: |
-          import sys
-          print(sys.version)
-        shell: python
+          node-version: ${{ matrix.node }}
+      - name: NPM Version
+        run: npm -v
