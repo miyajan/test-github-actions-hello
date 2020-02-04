@@ -8,10 +8,12 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     env:
-      TEST: fuga
+      GITHUB_TEST: fuga
     steps:
       - run: echo "Hello, World"
       - run: echo $GITHUB_TEST
+        env:
+          GITHUB_TEST: foo
       - run: echo $GITHUB_REF
       - id: test
         run: echo $GITHUB_HEAD_REF
