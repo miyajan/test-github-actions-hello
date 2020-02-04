@@ -11,7 +11,7 @@ jobs:
         - 8080
       volumes:
         - /etc:/hostetc
-      options: --cpus 1
+      options: --privileged --cpus 1
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
@@ -19,6 +19,7 @@ jobs:
           echo $HOME
           echo $GITHUB_WORKSPACE
           echo $GITHUB_SHA
+          echo $GITHUB_EVENT_PATH
           ls /hostetc
       - run: node -v
       - run: npm -v
