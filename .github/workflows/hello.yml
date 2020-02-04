@@ -19,6 +19,7 @@ jobs:
           echo $HOME
           echo $GITHUB_WORKSPACE
           echo $GITHUB_SHA
+          ls /tmp
       - run: node -v
       - run: npm -v
       - run: |
