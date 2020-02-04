@@ -11,6 +11,7 @@ jobs:
       image: node:12.14.1-stretch
       env:
         NODE_ENV: development
+        TEST: foo
       ports:
         - 8080
       options: --cpus 1
