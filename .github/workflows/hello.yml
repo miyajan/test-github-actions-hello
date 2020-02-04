@@ -13,16 +13,13 @@ jobs:
         - 8080
       options: --cpus 1
     services:
-      postgres: postgres:12.1
+      nginx:
+        image: nginx:1.17.8
+        ports:
+          - 8080
     steps:
-      - run: echo "Hello, World"
-      - run: ls /usr/lib
-      - run: curl postgres:5432
+      - run: echo "${{ job.services.nginx.ports['8080'] }}"
       - uses: actions/checkout@v1.0.0
-      - uses: docker://alpine:3.11
-        with:
-          entrypoint: /bin/curl
-          args: postgres:5432
       - run: |
           import sys
           print(sys.version)
