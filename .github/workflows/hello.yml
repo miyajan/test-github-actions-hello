@@ -11,6 +11,11 @@ jobs:
       TEST: fuga
     steps:
       - run: echo "Hello, World"
+      - run: |
+          curl \
+            --request GET \
+            --url https://api.github.com/repos/${{ github.repository }}/issues \
+            --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
       - run: echo $GITHUB_REF
       - id: test
         run: echo $GITHUB_HEAD_REF
