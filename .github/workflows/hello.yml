@@ -26,11 +26,12 @@ jobs:
     steps:
       - run: echo "Hello, World"
       - run: ls /usr/lib
+      - run: curl postgres:5432
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
         with:
-          entrypoint: /bin/ls
-          args: /usr/lib
+          entrypoint: /bin/curl
+          args: postgres:5432
       - run: |
           import sys
           print(sys.version)
