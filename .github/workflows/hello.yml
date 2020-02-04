@@ -11,6 +11,9 @@ jobs:
       GITHUB_TEST: fuga
     steps:
       - run: echo "Hello, World"
+      - run: |
+          echo $GITHUB_RUN_ID
+          echo $GITHUB_RUN_NUMBER
       - run: echo $GITHUB_TEST
         env:
           GITHUB_TEST: foo
