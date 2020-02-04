@@ -11,7 +11,9 @@ jobs:
       TEST: fuga
     steps:
       - run: echo "Hello, World"
-      - run: echo $TEST
+      - env:
+          TEST: bar
+        run: echo $TEST
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
         with:
