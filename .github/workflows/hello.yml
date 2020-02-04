@@ -1,7 +1,7 @@
 name: hello
 on: push
 env:
-  TEST: hoge
+  GITHUB_TEST: hoge
 
 jobs:
   build:
