@@ -12,7 +12,7 @@ jobs:
       volumes:
         - /etc:/hostetc
       options: --privileged --cpus 1 -v "/etc:/hostetc"
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
       - run: echo "Hello, World"
       - run: |
