@@ -11,7 +11,7 @@ jobs:
         - 8080
       volumes:
         - /etc:/hostetc
-      options: --privileged --cpus 1
+      options: --privileged --cpus 1 -v "/etc:/hostetc"
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
