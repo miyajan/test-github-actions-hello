@@ -9,6 +9,7 @@ jobs:
       - run: echo "Hello, World!!"
       - run: echo $GITHUB_REF
       - run: echo $GITHUB_HEAD_REF
+      - run: echo $GITHUB_BASE_REF
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
         with:
