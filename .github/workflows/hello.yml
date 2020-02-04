@@ -10,11 +10,15 @@ jobs:
       ports:
         - 8080
       volumes:
-        - ./:/usr/src/app
+        - /tmp:/tmp
       options: --cpus 1
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
+      - run: |
+          echo $HOME
+          echo $GITHUB_WORKSPACE
+          echo $GITHUB_SHA
       - run: node -v
       - run: npm -v
       - run: |
