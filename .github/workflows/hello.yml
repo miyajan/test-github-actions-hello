@@ -17,8 +17,10 @@ jobs:
         image: nginx:1.17.8
         ports:
           - 8080
+        options: -v /etc:/hostetc
     steps:
       - run: echo "${{ job.services.nginx.ports['8080'] }}"
+      - run: ls /hostetc
       - uses: actions/checkout@v1.0.0
       - run: |
           import sys
