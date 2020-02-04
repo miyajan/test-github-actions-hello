@@ -3,15 +3,7 @@ on: push
 
 jobs:
   unit-test:
-    container:
-      image: node:12.14.1-stretch
-      env:
-        NODE_ENV: development
-      ports:
-        - 8080
-      volumes:
-        - /etc:/hostetc
-      options: --privileged --cpus 1 -v "/etc:/hostetc"
+    container: node:12.14.1-stretch
     runs-on: ubuntu-16.04
     steps:
       - run: echo "Hello, World"
