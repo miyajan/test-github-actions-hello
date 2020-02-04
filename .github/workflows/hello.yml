@@ -10,7 +10,7 @@ jobs:
       ports:
         - 8080
       volumes:
-        - /tmp:/tmp
+        - /etc:/hostetc
       options: --cpus 1
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +19,7 @@ jobs:
           echo $HOME
           echo $GITHUB_WORKSPACE
           echo $GITHUB_SHA
-          ls /tmp
+          ls /hostetc
       - run: node -v
       - run: npm -v
       - run: |
