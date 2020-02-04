@@ -11,8 +11,8 @@ jobs:
       TEST: fuga
     steps:
       - run: echo "Hello, World"
-      - run: exit 1
-        continue-on-error: true
+      - run: sleep 120
+        timeout-minutes: 1
       - uses: actions/checkout@v1.0.0
       - uses: docker://alpine:3.11
         with:
