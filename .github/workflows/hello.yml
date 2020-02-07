@@ -1,30 +1,11 @@
 name: hello
-on: push
-env:
-  TEST: hoge
+on: pull_request
 
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
-    env:
-      TEST: fuga
     steps:
-      - run: echo "Hello, World"
-      - run: |
-          curl \
-            --request GET \
-            --url https://api.github.com/repos/${{ github.repository }}/issues \
-            --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-      - run: echo $GITHUB_REF
-      - id: test
-        run: echo $GITHUB_HEAD_REF
-      - uses: actions/checkout@v1.0.0
-      - uses: docker://alpine:3.11
-        with:
-          entrypoint: /bin/echo
-          args: Hello, World!
-      - run: |
-          import sys
-          print(sys.version)
-        shell: python
+      - run: echo "${{ toJson(github.event) }}"
+      - if: contains(github.event.pull_request.labels.*.name, 'test')
+        run: echo "true"
