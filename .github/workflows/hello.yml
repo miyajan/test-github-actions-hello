@@ -6,6 +6,8 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ toJson(github.event) }}"
+      - run: echo "$GITHUB_EVENT"
+        env:
+          GITHUB_EVENT: ${{ toJson(github.event) }}
       - if: contains(github.event.pull_request.labels.*.name, 'test')
         run: echo "true"
