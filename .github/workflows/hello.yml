@@ -10,6 +10,6 @@ jobs:
       - uses: actions/cache@v1.1.0
         with:
           path: ~/
-          key: cache-${{ github.ref }}-key
+          key: v1-cache-${{ github.ref }}-key
           restore-keys: |
             cache-
