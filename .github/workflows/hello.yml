@@ -9,7 +9,10 @@ jobs:
       - run: echo "Hello, World"
       - uses: actions/cache@v1.1.0
         with:
-          path: ~/
-          key: cache-${{ github.ref }}-key
+          path: ~/test
+          key: v2-cache-${{ github.ref }}-key
           restore-keys: |
             cache-
+      - run: |
+          mkdir -p ~/test
+          echo "hoge" > ~/test/test.txt
