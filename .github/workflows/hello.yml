@@ -10,9 +10,9 @@ jobs:
       - uses: actions/cache@v1.1.0
         with:
           path: ~/test
-          key: v2-cache-${{ github.ref }}-key
+          key: v3-cache-${{ github.ref }}-key
           restore-keys: |
-            cache-
+            v3-cache-
       - run: |
           mkdir -p ~/test
           echo "hoge" > ~/test/test.txt
