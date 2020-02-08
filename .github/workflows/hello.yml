@@ -9,7 +9,7 @@ jobs:
       - run: echo "Hello, World"
       - uses: actions/cache@v1.1.0
         with:
-          path: /tmp
+          path: ~/
           key: cache-${{ github.ref }}-key
           restore-keys: |
             cache-
