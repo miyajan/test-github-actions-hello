@@ -2,21 +2,21 @@ name: hello
 on: push
 
 jobs:
-  build:
-    name: Greeting
+  upload-artifact:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
       - run: |
-          mkdir -p ${{ github.workspace }}/test/hoge
-          echo hoge > ${{ github.workspace }}/test/hoge/fuga.txt
-          mkdir -p ${{ github.workspace }}/dist
+          mkdir data
+          echo "data" > data/data.txt
       - uses: actions/upload-artifact@v1.0.0
         with:
-          name: foo
-          path: test/hoge
+          name: data
+          path: data.txt
+  download-artifact:
+    runs-on: ubuntu-latest
+    needs: upload-artifact
+    steps:
       - uses: actions/download-artifact@v1.0.0
         with:
-          name: foo
-          path: dist
-      - run: ls ${{ github.workspace }}/dist
+          name: data
+      - run: cat data/data.txt
