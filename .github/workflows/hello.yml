@@ -10,6 +10,7 @@ jobs:
       - run: |
           mkdir -p ${{ github.workspace }}/test/hoge
           echo hoge > ${{ github.workspace }}/test/hoge/fuga.txt
+          mkdir -p ${{ github.workspace }}/dist
       - uses: actions/upload-artifact@v1.0.0
         with:
           name: foo
@@ -17,4 +18,5 @@ jobs:
       - uses: actions/download-artifact@v1.0.0
         with:
           name: foo
-      - run: ls ${{ github.workspace }}/foo
+          path: ${{ github.workspace }}/dist
+      - run: ls ${{ github.workspace }}/dist
