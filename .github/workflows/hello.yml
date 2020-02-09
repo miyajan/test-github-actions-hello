@@ -18,5 +18,5 @@ jobs:
       - uses: actions/download-artifact@v1.0.0
         with:
           name: foo
-          path: ${{ github.workspace }}/dist
+          path: dist
       - run: ls ${{ github.workspace }}/dist
