@@ -2,7 +2,7 @@ name: hello
 on: push
 
 jobs:
-  upload-artifact:
+  upload:
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -12,9 +12,9 @@ jobs:
         with:
           name: data
           path: data
-  download-artifact:
+  download:
     runs-on: ubuntu-latest
-    needs: upload-artifact
+    needs: upload
     steps:
       - uses: actions/download-artifact@v1.0.0
         with:
