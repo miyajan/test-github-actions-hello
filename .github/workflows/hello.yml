@@ -36,3 +36,7 @@ jobs:
       - run: echo $PATH
       - run: echo "::debug::Debug Message"
       - run: echo "::debug file=.github/workflows/hello.yml,line=1,col=5::Debug Message"
+      - run: echo "::warning::Warning Message"
+      - run: echo "::warning file=.github/workflows/hello.yml,line=1,col=5::Warning Message"
+      - run: echo "::error::Error Message"
+      - run: echo "::error file=.github/workflows/hello.yml,line=1,col=5::Error Message"
