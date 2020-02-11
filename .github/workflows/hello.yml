@@ -29,3 +29,8 @@ jobs:
       - id: test
         run: echo "::set-output name=result::true"
       - run: echo "${{ steps.test.outputs.result }}"
+      - run: |
+          echo $PATH
+          echo "::add-path::${{ github.workspace }}"
+          echo $PATH
+      - run: echo $PATH
