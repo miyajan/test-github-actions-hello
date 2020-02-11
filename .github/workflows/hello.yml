@@ -45,3 +45,13 @@ jobs:
           echo "::add-mask::password"
           echo "password"
       - run: echo "password"
+      - run: |
+          echo "::stop-commands::stop"
+          echo "::stop-commands::stop"
+          echo "::set-env name=TZ::Asia/Tokyo"
+      - run: |
+          echo "::stop-commands::stop"
+          echo "::set-env name=TZ::Asia/Tokyo"
+          echo "::stop::"
+          echo "::set-env name=TZ::Asia/Tokyo"
+      - run: echo "::set-env name=TZ::Asia/Tokyo"
