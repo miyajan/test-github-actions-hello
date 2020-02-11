@@ -1,5 +1,5 @@
 name: hello
-on: [push,pull_request]h
+on: [push,pull_request]
 
 jobs:
   build:
