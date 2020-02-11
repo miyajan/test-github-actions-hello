@@ -17,6 +17,7 @@ jobs:
           TEST="This is line 1
           This is line 2
           This is line 3"
+          echo $TEST
           echo "::set-env name=HOGE::$TEST"
           echo $HOGE
       - run: |
