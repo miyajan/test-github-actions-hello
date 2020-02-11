@@ -12,6 +12,7 @@ jobs:
           echo $TZ
       - run: |
           echo $TZ
+      - run: echo "::set-env name=TZ::Asia/Tokyo" >&2
       - run: |
           echo $HOGE
           TEST="This is line 1
