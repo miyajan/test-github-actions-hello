@@ -40,3 +40,8 @@ jobs:
       - run: echo "::warning file=.github/workflows/hello.yml,line=1,col=5::Warning Message"
       - run: echo "::error::Error Message"
       - run: echo "::error file=.github/workflows/hello.yml,line=1,col=5::Error Message"
+      - run: |
+          echo "password"
+          echo "::add-mask::password"
+          echo "password"
+      - run: echo "password"
