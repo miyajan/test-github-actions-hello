@@ -6,13 +6,18 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
       - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+          echo $TZ
+          echo "::set-env name=TZ::Asia/Tokyo"
+          echo $TZ
+      - run: |
+          echo $TZ
+      - run: |
+          echo $HOGE
+          TEST="This is line 1
+          This is line 2
+          This is line 3"
+          echo "::set-env name=HOGE::$TEST"
+          echo $HOGE
+      - run: |
+           echo $HOGE
