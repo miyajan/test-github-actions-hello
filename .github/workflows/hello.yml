@@ -35,4 +35,4 @@ jobs:
           echo $PATH
       - run: echo $PATH
       - run: echo "::debug::Debug Message"
-      - run: echo "::debug file=README.md,line=1,col=5::Debug Message"
+      - run: echo "::debug file=.github/workflows/hello.yml,line=1,col=5::Debug Message"
