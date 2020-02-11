@@ -21,6 +21,7 @@ jobs:
           TEST="${TEST//'%'/'%25'}"
           TEST="${TEST//$'\n'/'%0A'}"
           TEST="${TEST//$'\r'/'%0D'}"
+          echo $TEST
           echo "::set-env name=HOGE::$TEST"
           echo $HOGE
       - run: |
