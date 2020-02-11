@@ -1,5 +1,5 @@
 name: hello
-on: push
+on: [push,pull_request]h
 
 jobs:
   build:
@@ -34,3 +34,5 @@ jobs:
           echo "::add-path::${{ github.workspace }}"
           echo $PATH
       - run: echo $PATH
+      - run: echo "::debug::Debug Message"
+      - run: echo "::debug file=README.md,line=1,col=5::Debug Message"
