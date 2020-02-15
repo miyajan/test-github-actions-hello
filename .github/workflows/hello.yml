@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - uses: github-actions-up-and-running/hello-action@v1.0.0
+      - uses: github-actions-up-and-running/hello-action@test-name
