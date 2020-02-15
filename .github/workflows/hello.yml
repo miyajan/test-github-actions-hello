@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - uses: github-actions-up-and-running/hello-action@test-name
+      - uses: miyajan/javascript-action-hello@test-name
