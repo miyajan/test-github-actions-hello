@@ -4,15 +4,10 @@ on: push
 jobs:
   build:
     name: Greeting
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [windows-latest, windows-2016, windows-2019]
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+      - shell: cmd
+        run: systeminfo
