@@ -2,17 +2,15 @@ name: hello
 on: push
 
 jobs:
-  build:
-    name: Greeting
+  job1:
     runs-on: ubuntu-latest
+    outputs:
+      random: ${{ steps.generate-random.outputs.random }}
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+      - id: generate-random
+        run: echo "::set-output name=random::$(openssl rand -base64 12)"
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo "${{ needs.job1.outputs.random }}"
