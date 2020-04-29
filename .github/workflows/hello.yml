@@ -8,9 +8,11 @@ defaults:
 
 jobs:
   build:
+    defaults:
+      run:
+        shell: bash
+        working-directory: /
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          import os
-          print(os.getcwd())
+      - run: pwd
