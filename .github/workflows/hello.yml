@@ -8,4 +8,4 @@ jobs:
     steps:
       - id: set-json-output
         run: echo '::set-output name=json::{"greeting":"Hello, World!"'
-      - run: echo ${{ fromJson(steps.set-json-output.outputs.json).greeting }}
+      - run: echo ${{ fromJson(steps.set-json-output.outputs.json) }}
