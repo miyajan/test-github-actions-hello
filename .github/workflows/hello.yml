@@ -15,11 +15,9 @@ jobs:
             npm: 6
     runs-on: ${{ matrix.os }}
     steps:
-      - run: echo
       - name: Set Node.js ${{ matrix.node }}
         uses: actions/setup-node@v1.3.0
         with:
           node-version: ${{ matrix.node }}
       - name: Node.js Version
         run: node -v
-      - run: echo ${{ matrix.npm }}
