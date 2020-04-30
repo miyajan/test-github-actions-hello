@@ -12,6 +12,7 @@ jobs:
     steps:
       - run: echo "Hello, World"
       - run: |
+          echo $CI
           echo $GITHUB_RUN_ID
           echo $GITHUB_RUN_NUMBER
       - run: exit 1
