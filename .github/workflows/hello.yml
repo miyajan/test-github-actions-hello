@@ -6,4 +6,4 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ fromJson('{"greeting":"Hello, World!"}').greeting }}
+      - run: echo ${{ fromJSON('{"greeting":"Hello, World!"}').greeting }}
