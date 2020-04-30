@@ -6,6 +6,4 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - id: set-json-output
-        run: echo '::set-output name=json::{"greeting":"Hello, World!"'
-      - run: echo ${{ fromJson(steps.set-json-output.outputs.json) }}
+      - run: echo ${{ fromJson('{"greeting":"Hello, World!"}').greeting }}
