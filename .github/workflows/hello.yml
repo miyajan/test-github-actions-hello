@@ -4,21 +4,8 @@ env:
   TEST: hoge
 
 jobs:
-  build:
-    name: Greeting
+  always-success:
     runs-on: ubuntu-latest
-    env:
-      TEST: fuga
+    continue-on-error: true
     steps:
-      - run: echo "Hello, World"
-      - run: sleep 120
-        timeout-minutes: 1
-      - uses: actions/checkout@v1.0.0
-      - uses: docker://alpine:3.11
-        with:
-          entrypoint: /bin/echo
-          args: Hello, World!
-      - run: |
-          import sys
-          print(sys.version)
-        shell: python
+      - run: exit 1
