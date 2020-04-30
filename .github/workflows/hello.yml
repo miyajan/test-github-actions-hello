@@ -9,6 +9,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node: [10, 12]
+        include:
+          - os: ubuntu-16.04
+            node: 8
+            npm: 6
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo
@@ -18,3 +22,4 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Node.js Version
         run: node -v
+      - run: echo ${{ matrix.npm }}
