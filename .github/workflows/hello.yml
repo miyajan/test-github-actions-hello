@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - run: echo "TZ=Asia/Tokyo" >> $GITHUB_ENV
+      - run: |
+          echo $TZ
+          echo "TZ=Asia/Tokyo" >> $GITHUB_ENV
+          echo $TZ
       - run: echo $TZ
       - run: echo "${{ github.workspace }}" >> $GITHUB_PATH
       - run: echo $PATH
