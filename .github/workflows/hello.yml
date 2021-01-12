@@ -7,12 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+      - run: echo "TZ=Asia/Tokyo" >> $GITHUB_ENV
+      - run: echo $TZ
+      - run: echo "${{ github.workspace }}" >> $GITHUB_PATH
+      - run: echo $PATH
