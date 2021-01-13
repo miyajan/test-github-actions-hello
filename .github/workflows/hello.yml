@@ -12,5 +12,11 @@ jobs:
           echo "TZ=Asia/Tokyo" >> $GITHUB_ENV
           echo $TZ
       - run: echo $TZ
+      - run: |
+          echo "MULTILINE<<EOF" >> $GITHUB_ENV
+          echo "line 1" >> $GITHUB_ENV
+          echo "line 2" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+      - run: echo $MULTILINE
       - run: echo "${{ github.workspace }}" >> $GITHUB_PATH
       - run: echo $PATH
