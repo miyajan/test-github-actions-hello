@@ -23,5 +23,8 @@ jobs:
           curl https://httpbin.org/json >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
       - run: echo "$JSON_RESPONSE"
-      - run: echo "${{ github.workspace }}" >> $GITHUB_PATH
+      - run: |
+          echo $PATH
+          echo "${{ github.workspace }}" >> $GITHUB_PATH
+          echo $PATH
       - run: echo $PATH
