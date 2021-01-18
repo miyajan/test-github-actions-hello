@@ -3,16 +3,23 @@ on: push
 
 jobs:
   build:
-    name: Greeting
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/miyajan/hello-world-private
+      credentials:
+        username: ${{ secrets.IMAGE_USERNAME }}
+        password: ${{ secrets.IMAGE_PASSWORD }}
+    name: Greeting
     steps:
       - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+  unit-test:
+    runs-on: ubuntu-latest
+    services:
+      private-service:
+        image: ghcr.io/miyajan/hello-world-private
+        credentials:
+          username: ${{ secrets.IMAGE_USERNAME }}
+          password: ${{ secrets.IMAGE_PASSWORD }}
+    name: hoge
+    steps:
+      - run: echo "Hello, World"
