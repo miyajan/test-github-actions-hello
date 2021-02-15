@@ -1,18 +1,58 @@
 name: hello
-on: push
+on: [push,pull_request]
 
 jobs:
   build:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
       - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+          echo $TZ
+          echo "::set-env name=TZ::Asia/Tokyo"
+          echo $TZ
+      - run: |
+          echo $TZ
+      - run: echo "::set-env name=TZ::Asia/Tokyo" >&2
+      - run: |
+          echo $HOGE
+          TEST="This is line 1
+          This is line 2
+          This is line 3"
+          echo $TEST
+          TEST="${TEST//'%'/'%25'}"
+          TEST="${TEST//$'\n'/'%0A'}"
+          TEST="${TEST//$'\r'/'%0D'}"
+          echo $TEST
+          echo "::set-env name=HOGE::$TEST"
+          echo $HOGE
+      - run: |
+           echo $HOGE
+      - id: test
+        run: echo "::set-output name=result::true"
+      - run: echo "${{ steps.test.outputs.result }}"
+      - run: |
+          echo $PATH
+          echo "::add-path::${{ github.workspace }}"
+          echo $PATH
+      - run: echo $PATH
+      - run: echo "::debug::Debug Message"
+      - run: echo "::debug file=.github/workflows/hello.yml,line=1,col=5::Debug Message"
+      - run: echo "::warning::Warning Message"
+      - run: echo "::warning file=.github/workflows/hello.yml,line=1,col=5::Warning Message"
+      - run: echo "::error::Error Message"
+      - run: echo "::error file=.github/workflows/hello.yml,line=1,col=5::Error Message"
+      - run: |
+          echo "password"
+          echo "::add-mask::password"
+          echo "password"
+      - run: echo "password"
+      - run: |
+          echo "::stop-commands::stop"
+          echo "::stop-commands::stop"
+          echo "::set-env name=TZ::Asia/Tokyo"
+      - run: |
+          echo "::stop-commands::stop"
+          echo "::set-env name=TZ::Asia/Tokyo"
+          echo "::stop::"
+          echo "::set-env name=TZ::Asia/Tokyo"
+      - run: echo "::set-env name=TZ::Asia/Tokyo"
