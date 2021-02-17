@@ -6,13 +6,14 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+      - uses: actions/checkout@v2
+      - name: Make branch and push it
+        run: |
+          BRANCH_NAME="merge-$(date +%Y.%m.%d)-${GITHUB_RUN_NUMBER}"
+          echo "BRANCH_NAME: ${BRANCH_NAME}"
+          git checkout -b ${BRANCH_NAME} origin/main
+          echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+          echo "BRANCH_NAME: ${BRANCH_NAME}"
+          git push git@github.com:${GITHUB_REPOSITORY}.git ${BRANCH_NAME}
+          echo "::set-output name=branch_name:${BRANCH_NAME}"
+        id: make-and-push-branch
