@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - uses: actions/cache@4134e6de47156381d31ff74f8aabf86718858f70
+      - uses: actions/cache@4134e6d
         with:
           path: ~/test
           key: v3-cache-${{ github.ref }}-key
