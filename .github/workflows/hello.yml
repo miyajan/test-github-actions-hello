@@ -2,17 +2,15 @@ name: hello
 on: push
 
 jobs:
-  build:
-    name: Greeting
+  build1:
+    name: Build1
     runs-on: ubuntu-latest
+    if: false
     steps:
       - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+  build2:
+    name: Build2
+    needs: [build1]
+    if: success() || skipped()
+    steps:
+      - run: echo "Started"
