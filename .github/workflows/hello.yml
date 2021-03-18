@@ -8,7 +8,7 @@ jobs:
     if: true
     steps:
       - run: echo "Hello, World"
-      - run: exit 1
+      - run: exit 0
   build2:
     name: Build2
     runs-on: ubuntu-latest
