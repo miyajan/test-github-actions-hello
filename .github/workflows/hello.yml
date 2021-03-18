@@ -12,6 +12,6 @@ jobs:
     name: Build2
     runs-on: ubuntu-latest
     needs: [build1]
-    if: always()
+    if: !failure() && !canceled()
     steps:
       - run: echo "Started"
