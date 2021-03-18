@@ -12,6 +12,6 @@ jobs:
     name: Build2
     runs-on: ubuntu-latest
     needs: [build1]
-    if: success() || skipped()
+    if: needs.build1.result == "success" || needs.build1.result == "skipped"
     steps:
       - run: echo "Started"
