@@ -1,5 +1,5 @@
 name: hello
-on: push
+on: pull_request
 
 jobs:
   build:
@@ -7,12 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
+      - uses: actions/checkout@v2
       - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+          cat test.txt
