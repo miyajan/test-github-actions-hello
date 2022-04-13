@@ -6,6 +6,7 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: |
           echo "message: ${{ github.event.commits[0].message }}"
           echo "sha: ${{ github.event.commits[0].sha }}"
