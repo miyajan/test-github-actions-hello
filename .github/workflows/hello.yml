@@ -9,3 +9,4 @@ jobs:
       - run: |
           echo "message: ${{ github.event.commits[0].message }}"
           echo "sha: ${{ github.event.commits[0].sha }}"
+          echo "toJSON: ${{ toJSON(github.event) }}"
