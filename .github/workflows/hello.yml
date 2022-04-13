@@ -11,5 +11,6 @@ jobs:
           echo "message: ${{ github.event.commits[0].message }}"
           echo "sha: ${{ github.event.commits[0].sha }}"
           echo "toJSON: ${{ toJSON(github.event) }}"
+          git fetch origin/develop
           git log -n 1 origin/develop
           git log -n 1 origin/develop --pretty=format:"%H"
