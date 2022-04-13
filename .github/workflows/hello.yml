@@ -10,3 +10,5 @@ jobs:
           echo "message: ${{ github.event.commits[0].message }}"
           echo "sha: ${{ github.event.commits[0].sha }}"
           echo "toJSON: ${{ toJSON(github.event) }}"
+          git log -n 1 develop
+          git log -n 1 develop --pretty=format:"%H"
