@@ -6,13 +6,7 @@ jobs:
     name: Greeting
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
       - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+          echo ".github/workflows/tag-modules.yaml" > ~/test.txt
+          echo "modules/base/budgets.tf" >> ~/test.txt
+          cat ~/test.txt | sed -n -e "s/^modules\/\(.*\)\/.*$/\1/p"
