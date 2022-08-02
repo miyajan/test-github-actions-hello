@@ -10,4 +10,5 @@ jobs:
           echo ".github/workflows/tag-modules.yaml" > ~/test.txt
           echo "modules/base/budgets.tf" >> ~/test.txt
           CHANGED_FILES=$(cat ~/test.txt | sed -n -e "s/^modules\/\(.*\)\/.*$/\1/p")
-          echo $CHANGED_FILES | sed -n -e "s/^modules\/\(.*\)\/.*$/\1/p"
+          echo "CHANGED_FILES: ${CHANGED_FILES}"
+          echo "$CHANGED_FILES" | sed -n -e "s/^modules\/\(.*\)\/.*$/\1/p"
