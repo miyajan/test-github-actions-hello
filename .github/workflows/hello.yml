@@ -1,18 +1,15 @@
-name: hello
+name: test
 on: push
 
 jobs:
-  build:
-    name: Greeting
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World"
-      - uses: actions/cache@v1.1.0
-        with:
-          path: ~/test
-          key: v3-cache-${{ github.ref }}-key
-          restore-keys: |
-            v3-cache-
-      - run: |
-          mkdir -p ~/test
-          echo "hoge" > ~/test/test.txt
+      - run: echo "hoge=fuga" >> $GITHUB_ENV
+      - run: echo "${{ env.hoge }}"
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ env.hoge }}"
