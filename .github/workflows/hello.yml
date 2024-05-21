@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: miyajan/javascript-action-hello@master
         with:
-          test: {{ 1 + 1 }}
+          test: fuga
