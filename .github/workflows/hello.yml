@@ -1,11 +1,14 @@
-name: hello
-on: push
+on:
+  push:
 
 jobs:
-  build:
-    name: Greeting
+  job1:
     runs-on: ubuntu-latest
     steps:
-      - uses: miyajan/javascript-action-hello@master
-        with:
-          test: fuga
+      - &checkout
+        name: Check out code
+        uses: actions/checkout@v4
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - *checkout
